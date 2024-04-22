@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bank withdrawal</title>
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/vant/2.12.30/index.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com">
+  <style>
+   body{
+    background-color: #3f113d;
+   }
+    /* styles.css */
+.whatsapp {
+  background-color: #25D366;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.whatsapp:hover {
+  background-color: #128C7E;
+}
+
+.nav{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 55px;
+    box-shadow: 0 0 3px rgba(0,0,0);
+    background-color: #fff;
+    display: flex;
+    overflow-x: auto;
+}
+.nav__link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    min-width: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: sans-serif;
+    font-size: 25px;
+    color: #444444;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.1s ease-in-out;
+}
+.nav__link:hover{
+    background-color: #d84e4e;
+}
+nav__link--active{
+    color: #009578;
+}
+.nav__icon{
+    font-size: 18px;
+
+}
+  </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html" class="nav__link">
+              <i class="fa fa-heart"></i>
+              <span class="nav__text">ABOUT</span>
+           </a>
+       <a href="bank.html" class="nav__link">
+          <i class="fa fa-home"></i>
+          <span class="nav__text">HOME</span>
+       </a>
+       <a href="navber.html" class="nav__link">
+          <i class="fa fa-bar-chart"></i>
+          <span class="nav__text">SERVICES</span>
+       </a>
+       <a href="" class="nav__link">
+          <i class="fa fa-info"></i>
+          <span class="nav__text">HELP</span>
+       </a>
+       <a href="login.html" class="nav__link">
+          <i class="fa fa-sign-out"></i>
+          <span class="nav__text">SIGN OUT</span>
+       </a>
+       </nav>
+       <div class="Note">
+        <h1 style="text-align: center; color: #25D366;"><u>MOST IMPORTANT NOTE !</u></h1>
+        <p style="margin: 20px; font-size: 20px; color: #1845a5;">1. Let us be your security guard. <br>2. Send us your Details in Private <br>3. Send Your Bank Details to our WhatsApp Number <br>4. We will Charge 5% Tax on Your Wallet Amount The <br>---Remaining Amount Will Be Added to Your Bank Account <br>5.12 to 72 Hours To Get Credit In Your Account <br> 6. Incase 12 with 72 Hours Not Add Bank Account <br>---I Will Pay 20% Fine Amount And Rent Your Bank Account <br> 7. My Team 24/7 Can Help. <br> 8. Sand Bank Details Below Numbers</p>
+       </div>
+    <button class="whatsapp" id="whatsappBtn" style="margin: 70px;margin-top: 90px;"><p>+17864142563</p><img src="data:image/png;base64,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" alt="" style="width: 50px;"></button>
+    <button class="whatsapp" id="whatsappBTn" style="margin: 70px;margin-top: 0px;" ><p>+15807892772</p><img src="data:image/png;base64,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" alt="" style="width: 50px;"></button>
+<script>
+    document.getElementById("whatsappBtn").addEventListener("click", function() {
+      var phoneNumber = "+17864142563" ; // Replace with the phone number you want to open in WhatsApp
+      var message = "Hello"; // Replace with the message you want to send
+      var url = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodeURIComponent(message);
+      window.open(url, "_blank");
+    });
+  </script>
+  <script>
+    document.getElementById("whatsappBTn").addEventListener("click", function() {
+      var phoneNumber = "+" ; // Replace with the phone number you want to open in WhatsApp
+      var message = "HI"; // Replace with the message you want to send
+      var url = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodeURIComponent(message);
+      window.open(url, "_blank");
+    });
+  </script>
+</body>
+</html>

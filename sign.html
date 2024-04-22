@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+        input[type="tel"],
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button[type="button"],
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button[type="button"]:hover,
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .already-logged-in {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .already-logged-in a {
+            color: orange;
+            text-decoration: none;
+        }
+        .already-logged-in a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Signup</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="mobile">Mobile Number:</label>
+                <input type="tel" id="mobile" maxlength="10" required>
+                <button type="button" id="generateOTP">Generate OTP</button>
+            </div>
+            <div class="form-group">
+                <label for="otp">OTP:</label>
+                <input type="text" id="otp" maxlength="4" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" maxlength="7" required>
+            </div>
+            <div class="form-group">
+                <label for="referral">Referral Code:</label>
+                <input type="text" id="referral" maxlength="10">
+            </div>
+            <button type="submit">Signup</button>
+        </form>
+        <div class="already-logged-in">
+            <a href="login.html">Already Logged In?</a>
+        </div>
+    </div>
+    <script>
+        document.getElementById('generateOTP').addEventListener('click', function() {
+            var otp = Math.floor(1000 + Math.random() * 9000); // Generate a 4-digit OTP
+            localStorage.setItem('otp', otp); // Save OTP to local storage
+            alert('OTP generated: ' + otp);
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var mobile = document.getElementById('mobile').value;
+            var enteredOTP = document.getElementById('otp').value;
+            var password = document.getElementById('password').value;
+            var referral = document.getElementById('referral').value;
+            var storedOTP = localStorage.getItem('otp');
+            
+            if (enteredOTP !== storedOTP) {
+                alert('Invalid OTP. Please generate OTP again.');
+                return;
+            }
+            
+            // Check if user already exists
+            var users = JSON.parse(localStorage.getItem('users')) || [];
+            var existingUser = users.find(function(user) {
+                return user.mobile === mobile;
+            });
+            
+            if (existingUser) {
+                alert('User already exists. Please login.');
+                return;
+            }
+            
+            // Save user data to local storage
+            var userData = {
+                mobile: mobile,
+                password: password,
+                referral: referral
+            };
+            users.push(userData);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            // Navigate to login page
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
